@@ -11,6 +11,9 @@ port = 7787  # The port for the proxy server.
 # TCP socket to listen for incoming connections.
 with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:  # TCP taken from code on MOODLE
     s.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)  # This is to reuse the same port if it is already in use
+    # Sometimes when running it multiple times, the port can still be in use, so this reuses the same port removing that problem
+    # Learned about it through https://www.programcreek.com/python/example/410/socket.SO_REUSEADDR
+    
     s.bind((host, port))  # Here we bind the socket to the host and port.
     s.listen(1)  # And we start listening for incoming connections.
     print("Listening on " + str(host) + ":" + str(port))  # Print a message to the console.
