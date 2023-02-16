@@ -5,7 +5,7 @@ import socket
 import time
 import uuid
 
-website_host = input("Please enter an website URL or an IP address:")  # website ip
+website_host = input("Please enter an website URL or an IP address:")  # website url/ip
 website_port = 80  # website port
 # Used port 80 with help from http://www.steves-internet-guide.com/tcpip-ports-sockets/
 
