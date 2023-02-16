@@ -42,4 +42,6 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as client_socket:  # TCP 
     print("Round-trip time:" + str(round_trip_time) + " seconds")  # prints round trip time
 
     mac = uuid.getnode()  # gets mac address
+    # mac address method taken from https://www.geeksforgeeks.org/extracting-mac-address-using-python/
+    
     print("MAC address:" + str(mac))  # prints mac address
