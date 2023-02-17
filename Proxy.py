@@ -37,6 +37,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:  # TCP taken from c
             conn.sendall("HTTP/1.1 400 Bad Request\n\n".encode('utf-8'))
             conn.close()
             continue
+            
         host, _, port = host_header[0].split()[1].partition(":")  # Parse host header, get destination server IP + port
         port = int(port) if port else 80  # If the port is missing, use port 80.
         ip = socket.gethostbyname(host)  # Gets IP from URL
@@ -49,6 +50,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:  # TCP taken from c
         # Send the client's request to the destination server.
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as dest_sock:
             dest_sock.settimeout(10)  # 10 seconds timeout in case the destination server is unavailable (tried with 5 seconds, in some cases timeout passed).
+            
             try:
                 dest_sock.connect((host, port))  # Connect to the destination server.
                 dest_sock.sendall(request.encode())  # Send the request to the destination server.
@@ -57,6 +59,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:  # TCP taken from c
                 conn.sendall("HTTP/1.1 504 Gateway Timeout\n\n")
                 conn.close()
                 continue
+                
             except socket.error as e:
                 print("Error: Connection to " + str(host) + ":" + str(port) + " failed with " + str(e) + " at " + time.ctime())
                 conn.sendall("HTTP/1.1 504 Gateway Timeout\n\n")
@@ -71,6 +74,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:  # TCP taken from c
                 conn.sendall("HTTP/1.1 504 Gateway Timeout\n\n")
                 conn.close()
                 continue
+                
         print("Response received from " + host + ":" + str(port) + " at " + time.ctime())
 
         conn.sendall(response)  # Send the response back to the client.
