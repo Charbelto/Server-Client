@@ -48,7 +48,7 @@ with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as s:  # TCP taken from c
 
         # Send the client's request to the destination server.
         with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as dest_sock:
-            dest_sock.settimeout(10)  # 10 seconds timeout in case the destination server is unavailable.
+            dest_sock.settimeout(10)  # 10 seconds timeout in case the destination server is unavailable (tried with 5 seconds, in some cases timeout passed).
             try:
                 dest_sock.connect((host, port))  # Connect to the destination server.
                 dest_sock.sendall(request.encode())  # Send the request to the destination server.
