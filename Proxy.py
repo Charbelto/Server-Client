@@ -1,6 +1,3 @@
-# Charbel Toumieh
-# ID: 202218744
-
 import socket
 import time
 
