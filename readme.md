@@ -1,4 +1,7 @@
-# Client Code
+# Server-Client
+  ![Screenshot](Screenshot.png)
+  
+## Client Code
 The client code allows a user to enter a website URL or IP address and port to send an HTTP GET request through a proxy server.
 
 It does the following:
@@ -16,7 +19,7 @@ It does the following:
 - Calculates and prints the total round trip time.
 - Gets and prints the MAC address of the client.
 
-# Proxy Server Code
+## Proxy Server Code
 The proxy server acts as an intermediary between the client and destination servers.
 
 It does the following:
