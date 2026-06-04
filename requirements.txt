@@ -1,0 +1,5 @@
+# No external packages are required for this project.
+# It runs entirely using Python's built-in standard library:
+# - socket (for TCP connection handling)
+# - time (for recording message delays)
+# - uuid (for reading physical interface address)
